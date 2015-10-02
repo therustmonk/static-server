@@ -1,0 +1,8 @@
+[package]
+name = "static-server"
+version = "0.1.0"
+authors = ["Denis Kolodin <deniskolodin@gmail.com>"]
+
+[dependencies]
+mime = "~0.1"
+hyper = "~0.6"
