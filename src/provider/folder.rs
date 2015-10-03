@@ -2,7 +2,7 @@ use std::io::Read;
 use std::fs::File;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
-use server::{StaticProvider};
+use server::StaticProvider;
 
 
 pub struct FolderProvider {

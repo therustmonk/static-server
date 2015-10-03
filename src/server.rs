@@ -2,6 +2,8 @@ use std::path::{Path};
 use std::sync::Arc;
 use std::net::ToSocketAddrs;
 
+use mime_guess::guess_mime_type;
+
 use hyper::{Server};
 use hyper::server::{Handler, Listening, Request, Response};
 use hyper::uri::RequestUri;
@@ -9,27 +11,21 @@ use hyper::header::{ContentType};
 use hyper::status::StatusCode;
 
 
-// Sync because used concurrent from handlers
 pub trait StaticProvider: Sync + Send + 'static {
-	// Count references, because provider can keep data in memory or return just allocated. Two ways.
 	fn get_data(&self, path: &Path) -> Option<Arc<Vec<u8>>>;
 }
-
 
 pub struct StaticServer<SP: StaticProvider> {
 	provider: Arc<SP>,
 }
 
-pub struct StaticThread {
+pub struct StaticWorker {
 	listening: Listening,
 }
 
-impl Drop for StaticThread {
+impl Drop for StaticWorker {
 	fn drop(&mut self) {
-		match self.listening.close() {
-			Ok(_) => (),
-			Err(_) => (),
-		}
+		let _ = self.listening.close();
 	}
 }
 
@@ -39,7 +35,7 @@ impl<SP: StaticProvider> StaticServer<SP> {
 		StaticServer { provider: Arc::new(provider) }
 	}
 
-	pub fn share<To: ToSocketAddrs>(&self, addr: To) -> Result<StaticThread, ()> {
+	pub fn share<To: ToSocketAddrs>(&self, addr: To) -> Result<StaticWorker, ()> {
 		let server = match Server::http(addr) {
 			Ok(server) => server,
 			Err(_) => return Err(()),
@@ -56,16 +52,7 @@ impl<SP: StaticProvider> StaticServer<SP> {
 					match provider.get_data(&path) {
 						Some(content) => {
 							*res.status_mut() = StatusCode::Ok;
-
-							let mime = match path.extension() {
-								Some(ext) => match ext.to_str() {
-									Some("html") => mime!(Text/Html),
-									Some("js"  ) => mime!(Application/Javascript),
-									Some("css" ) => mime!(Text/Css),
-									_ => mime!(Text/Plain),
-								},
-								_ => mime!(Text/Plain),
-							};
+							let mime = guess_mime_type(path);
 							res.headers_mut().set(ContentType(mime));
 							res.send(&content).unwrap();
 						},
@@ -76,7 +63,10 @@ impl<SP: StaticProvider> StaticServer<SP> {
 			}
 		};
 		match server.handle(handler) {
-			Ok(listening) => Ok(StaticThread{ listening: listening}),
+			Ok(listening) => {
+				let worker = StaticWorker{ listening: listening};
+				Ok(worker)
+			},
 			Err(_) => return Err(()),
 		}
 	}
