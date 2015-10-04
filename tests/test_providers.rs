@@ -30,8 +30,6 @@ fn check_equals(port: u16, resource: &str, source: &str) {
 	let source = format!("examples/static{}", source);
 	let resp = get_content(&resource);
 
-	println!("{:?}", source);
-
 	let mut f = File::open(source).unwrap();
 	let mut s = String::new();
 	f.read_to_string(&mut s).unwrap();

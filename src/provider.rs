@@ -40,7 +40,6 @@ pub fn provider_from_tar(path: &Path) -> StaticMap {
 	    	    };	    	    
 	    	    let mut content = Vec::with_capacity(size as usize);
     	    	file.read_to_end(&mut content).unwrap();
-    	    	println!("TAR {:?}", str_path);
     	    	result.insert(str_path, Arc::new(content));
 			},
 			_ => ()
