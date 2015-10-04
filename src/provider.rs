@@ -53,7 +53,6 @@ fn read_file_to_vec(path: &Path) -> Vec<u8> {
 		Ok(mut file) => {
 			let mut content = Vec::new();
 			file.read_to_end(&mut content).unwrap();
-			print!("{:?}", String::from_utf8(content.clone()).unwrap());
 			content
 		}
 		Err(_) => {

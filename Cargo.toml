@@ -1,6 +1,6 @@
 [package]
 name = "static-server"
-version = "0.0.2"
+version = "0.0.4"
 authors = ["Denis Kolodin <deniskolodin@gmail.com>"]
 description = "Library for serve static files by HTTP"
 repository = "https://github.com/DenisKolodin/static-server"
