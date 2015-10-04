@@ -1,23 +1,16 @@
-use std::path::{Path};
 use std::sync::Arc;
 use std::net::ToSocketAddrs;
 
-use mime_guess::guess_mime_type;
+use mime_guess::get_mime_type;
 
-use hyper::{Server};
+use hyper::Server;
 use hyper::server::{Handler, Listening, Request, Response};
 use hyper::uri::RequestUri;
-use hyper::header::{ContentType};
+use hyper::header::ContentType;
 use hyper::status::StatusCode;
 
+use provider::StaticMap;
 
-pub trait StaticProvider: Sync + Send + 'static {
-	fn get_data(&self, path: &Path) -> Option<Arc<Vec<u8>>>;
-}
-
-pub struct StaticServer<SP: StaticProvider> {
-	provider: Arc<SP>,
-}
 
 pub struct StaticWorker {
 	listening: Listening,
@@ -29,10 +22,15 @@ impl Drop for StaticWorker {
 	}
 }
 
-impl<SP: StaticProvider> StaticServer<SP> {
+// TODO Add trait StaticMapCreater with fn(path) and update/read method
+pub struct StaticServer {
+	map: Arc<StaticMap>,
+}
 
-	pub fn new(provider: SP) -> Self {
-		StaticServer { provider: Arc::new(provider) }
+impl StaticServer {
+
+	pub fn new(map: StaticMap) -> Self {
+		StaticServer { map: Arc::new(map) }
 	}
 
 	pub fn share<To: ToSocketAddrs>(&self, addr: To) -> Result<StaticWorker, ()> {
@@ -40,26 +38,25 @@ impl<SP: StaticProvider> StaticServer<SP> {
 			Ok(server) => server,
 			Err(_) => return Err(()),
 		};
-		let provider = self.provider.clone();
+		let map = self.map.clone();
 		let handler = move |req: Request, mut res: Response| {
-	    	match req.uri {
-	    		RequestUri::AbsolutePath(ref apath) => {
-	    			let path = if apath == "/" {
-	    				Path::new("index.html")
-	    			} else {
-	    				Path::new(apath)
-	    			};
-					match provider.get_data(&path) {
-						Some(content) => {
-							*res.status_mut() = StatusCode::Ok;
-							let mime = guess_mime_type(path);
-							res.headers_mut().set(ContentType(mime));
-							res.send(&content).unwrap();
-						},
-						None => *res.status_mut() = StatusCode::NotFound,
-					}    			
+	    	let (status, item) = match req.uri {
+	    		RequestUri::AbsolutePath(mut spath) => {
+	    			if spath.ends_with("/") {
+	    				spath.push_str("index.html")
+	    			}
+					let mime = get_mime_type(&spath);
+					res.headers_mut().set(ContentType(mime));					
+					match map.get(&spath) {
+						Some(item) => (StatusCode::Ok, Some(item)),
+						None => (StatusCode::NotFound, None),
+					}
 				},
-				_ => *res.status_mut() = StatusCode::BadRequest,
+				_ => (StatusCode::BadRequest, None),
+			};
+			*res.status_mut() = status;
+			if let Some(content) = item {
+				res.send(&content).unwrap();
 			}
 		};
 		match server.handle(handler) {
@@ -71,4 +68,3 @@ impl<SP: StaticProvider> StaticServer<SP> {
 		}
 	}
 }
-
