@@ -45,8 +45,13 @@ impl StaticServer {
 	    			if spath.ends_with("/") {
 	    				spath.push_str("index.html")
 	    			}
-					let mime = get_mime_type(&spath);
-					res.headers_mut().set(ContentType(mime));					
+	    			if let Some(pos) = spath.rfind('.') {
+	    				let mime = unsafe {
+	    					let ext = spath.slice_unchecked(pos + 1, spath.len());
+							get_mime_type(ext)
+						};
+						res.headers_mut().set(ContentType(mime));						    				
+	    			}
 					match map.get(&spath) {
 						Some(item) => (StatusCode::Ok, Some(item)),
 						None => (StatusCode::NotFound, None),
