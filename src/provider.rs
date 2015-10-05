@@ -1,14 +1,11 @@
 
 use std::io::{Read};
 use std::fs::{self, File};
-use std::sync::Arc;
-use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 use tar::Archive;
 
-pub type StaticMap = HashMap<String, Arc<Vec<u8>>>;
-
+use server::StaticMap;
 
 pub fn provider_from_folder(path: &Path) -> StaticMap {
 	let mut result = StaticMap::new();
@@ -40,7 +37,7 @@ pub fn provider_from_tar(path: &Path) -> StaticMap {
 	    	    };	    	    
 	    	    let mut content = Vec::with_capacity(size as usize);
     	    	file.read_to_end(&mut content).unwrap();
-    	    	result.insert(str_path, Arc::new(content));
+    	    	result.insert(str_path, content);
 			},
 			_ => ()
 		}
@@ -76,7 +73,7 @@ fn read_dir_with_subdirs(path: PathBuf, prefix: String, map: &mut StaticMap) {
 			read_dir_with_subdirs(new_path, new_prefix, map);
 		} else if meta.is_file() {
 			let content = read_file_to_vec(&new_path);
-			map.insert(new_prefix, Arc::new(content));
+			map.insert(new_prefix, content);
 		}
 	}
 }
