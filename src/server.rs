@@ -13,7 +13,7 @@ use hyper::status::StatusCode;
 
 pub type StaticMap = HashMap<String, Vec<u8>>;
 
-pub trait StaicProvider {
+pub trait StaicProvider: Sync + Send + 'static {
 	fn get_content(&self, path: &str) -> Option<&Vec<u8>>;
 }
 
@@ -35,12 +35,12 @@ impl Drop for StaticWorker {
 
 // TODO Add trait StaticMapCreater with fn(path) and update/read method
 pub struct StaticServer {
-	map: Arc<StaticMap>,
+	map: Arc<StaicProvider>,
 }
 
 impl StaticServer {
 
-	pub fn new(map: StaticMap) -> Self {
+	pub fn new<T: StaicProvider>(map: T) -> Self {
 		StaticServer { map: Arc::new(map) }
 	}
 
