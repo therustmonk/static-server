@@ -5,7 +5,7 @@ use std::net::ToSocketAddrs;
 use mime_guess::guess_mime_type;
 
 use hyper::Server;
-use hyper::server::{Handler, Listening, Request, Response};
+use hyper::server::{Listening, Request, Response};
 use hyper::uri::RequestUri;
 use hyper::header::ContentType;
 use hyper::status::StatusCode;
@@ -52,24 +52,32 @@ impl StaticServer {
 		let map = self.map.clone();
 		let handler = move |req: Request, mut res: Response| {
 	    	match req.uri {
-	    		RequestUri::AbsolutePath(mut spath) => {
-	    			if spath.ends_with("/") {
-	    				spath.push_str("index.html")
+	    		RequestUri::AbsolutePath(mut apath) => {
+	    			debug!("Request for static resource {}", apath);
+	    			if apath.ends_with("/") {
+	    				apath.push_str("index.html")
 	    			}
-	    			let mime = guess_mime_type(spath.as_ref());
-					res.headers_mut().set(ContentType(mime));						    				
-					match map.get_content(&spath) {
-						Some(item) => {
-							*res.status_mut() = StatusCode::Ok;
-							&res.send(item).unwrap();
-						},
-						None => *res.status_mut() = StatusCode::NotFound,
-					}
+    				if let Some(spath) = apath.splitn(2, '?').next() {
+		    			let mime = guess_mime_type(spath.as_ref());
+						res.headers_mut().set(ContentType(mime));						    				
+						match map.get_content(&spath) {
+							Some(item) => {
+								*res.status_mut() = StatusCode::Ok;
+								&res.send(item).unwrap();
+							},
+							None => *res.status_mut() = StatusCode::NotFound,
+						}
+    				} else {
+    					*res.status_mut() = StatusCode::BadRequest;
+    				}
 				},
 				_ => *res.status_mut() = StatusCode::BadRequest,
-			};
+			}
+			//res.end();
 		};
-		match server.handle(handler) {
+		// IMPORTANT! Browser blocks when there isn't enough threads!!!
+		// That's because workers can't accept incomming connections in keep-alive state.
+		match server.handle_threads(handler, 20) {
 			Ok(listening) => {
 				let worker = StaticWorker{ listening: listening};
 				Ok(worker)
