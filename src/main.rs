@@ -16,11 +16,12 @@ fn main() {
 
 	let ref path = match env::args().nth(1) {
 		Some(value) => value,
-		None => "examples/static".to_owned(),
+		None => ".".to_owned(),
 	};
 
 	let p = provider::provider_from_folder(Path::new(path));
 	let s = server::StaticServer::new(p);
-	let _ = s.share(("localhost", 8081));
-	loop { sleep(Duration::from_millis(1000)) }
+	let _ = s.share(("0.0.0.0", 8080));
+	loop { sleep(Duration::from_millis(1000)) } // TODO Content reload on changes
 }
+

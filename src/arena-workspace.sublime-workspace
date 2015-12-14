@@ -1,0 +1,895 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Fo",
+				"FolderProvider"
+			],
+			[
+				"pr",
+				"provider"
+			],
+			[
+				"use",
+				"username"
+			],
+			[
+				"Login",
+				"LoginWorker"
+			],
+			[
+				"S",
+				"String"
+			],
+			[
+				"Re",
+				"RejectWorker"
+			],
+			[
+				"re",
+				"reason"
+			],
+			[
+				"ser",
+				"services"
+			],
+			[
+				"to",
+				"to_owned"
+			],
+			[
+				"th",
+				"threads"
+			],
+			[
+				"Ha",
+				"HashMap"
+			],
+			[
+				"ite",
+				"iterator"
+			],
+			[
+				"recv_",
+				"recv_raw"
+			],
+			[
+				"sen",
+				"send_event"
+			],
+			[
+				"Ill",
+				"IllegalEventName"
+			],
+			[
+				"Il",
+				"IllegalJsonFormat"
+			],
+			[
+				"In",
+				"Input"
+			],
+			[
+				"rec",
+				"recv_message"
+			],
+			[
+				"ma",
+				"match	match … { … }"
+			],
+			[
+				"han",
+				"handlers"
+			],
+			[
+				"au",
+				"auth_login_handle"
+			],
+			[
+				"new",
+				"new_handler"
+			],
+			[
+				"Au",
+				"AuthService"
+			],
+			[
+				"Auth",
+				"AuthHandler"
+			],
+			[
+				"B",
+				"BTreeMap"
+			],
+			[
+				"Ca",
+				"Canceled"
+			],
+			[
+				"pro",
+				"promouter_router"
+			],
+			[
+				"A",
+				"Announce"
+			],
+			[
+				"un",
+				"unwrap"
+			],
+			[
+				"im",
+				"impl	impl … { … }"
+			],
+			[
+				"out_",
+				"out_tx"
+			],
+			[
+				"Ro",
+				"RouterConnector"
+			],
+			[
+				"Ou",
+				"Output"
+			],
+			[
+				"rece",
+				"receiver"
+			],
+			[
+				"Inter",
+				"Interaction"
+			],
+			[
+				"an",
+				"Announce"
+			],
+			[
+				"rou",
+				"router_tx"
+			],
+			[
+				"conn",
+				"connector"
+			],
+			[
+				"Work",
+				"WorkerMessage"
+			],
+			[
+				"to_",
+				"to_owned"
+			],
+			[
+				"json",
+				"json_kv"
+			],
+			[
+				"Se",
+				"Sender"
+			],
+			[
+				"spa",
+				"spawn_named"
+			],
+			[
+				"as",
+				"as_string"
+			],
+			[
+				"receiver_",
+				"receiver_tx"
+			],
+			[
+				"a",
+				"announce"
+			],
+			[
+				"ask_",
+				"ask_cancel"
+			],
+			[
+				"ke",
+				"keyfind"
+			],
+			[
+				"task",
+				"task_manager"
+			],
+			[
+				"start",
+				"start_link"
+			],
+			[
+				"New",
+				"NewPool"
+			],
+			[
+				"att",
+				"attach_test"
+			],
+			[
+				"attach_",
+				"attach_client"
+			],
+			[
+				"wait",
+				"wait_request"
+			],
+			[
+				"not",
+				"not_implemented"
+			],
+			[
+				"webso",
+				"websocket_handle"
+			],
+			[
+				"i",
+				"ifndef	Ifndef Directive"
+			],
+			[
+				"r",
+				"rec	Record Directive"
+			],
+			[
+				"no",
+				"no_task"
+			],
+			[
+				"R",
+				"Reference"
+			],
+			[
+				"wait_",
+				"wait_auth"
+			],
+			[
+				"RI",
+				"RIGHT_ROLE"
+			],
+			[
+				"LE",
+				"LEFT_COOKIE"
+			],
+			[
+				"Un",
+				"Unknown"
+			],
+			[
+				"se",
+				"send_event"
+			],
+			[
+				"send",
+				"send_json"
+			],
+			[
+				"print",
+				"println!	println! …"
+			],
+			[
+				"Mo",
+				"MongoClient"
+			],
+			[
+				"con",
+				"content"
+			],
+			[
+				"Path",
+				"PathBuf"
+			],
+			[
+				"get",
+				"get_data"
+			],
+			[
+				"Sta",
+				"StaticProvider"
+			],
+			[
+				"ru",
+				"run_simulator"
+			],
+			[
+				"Buf",
+				"BufWriter"
+			],
+			[
+				"start_static_server_",
+				"start_static_server_plain"
+			],
+			[
+				"sta",
+				"start_static_server"
+			],
+			[
+				"ch",
+				"check_magic"
+			],
+			[
+				"do",
+				"document"
+			],
+			[
+				"DB",
+				"DBResult"
+			],
+			[
+				"db",
+				"dbaccess"
+			],
+			[
+				"Object",
+				"ObjectId"
+			],
+			[
+				"Ob",
+				"ObjectId"
+			],
+			[
+				"prit",
+				"println!	println! …"
+			],
+			[
+				"prin",
+				"println!	println! …"
+			],
+			[
+				"de",
+				"denv_key"
+			],
+			[
+				"trans",
+				"trans_events"
+			],
+			[
+				"co",
+				"coroutine"
+			],
+			[
+				"mc",
+				"mcShot"
+			],
+			[
+				"col",
+				"col-md-5"
+			],
+			[
+				"h",
+				"h2"
+			],
+			[
+				"fil",
+				"filterfield"
+			],
+			[
+				"du",
+				"durmin"
+			],
+			[
+				"sim",
+				"simulationFatal"
+			],
+			[
+				"s",
+				"script"
+			],
+			[
+				"pla",
+				"Playground"
+			],
+			[
+				"load",
+				"loadModel"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Rust/Cargo.sublime-build",
+					""
+				],
+				[
+					"Packages/Rust/Cargo.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Rust/Cargo.sublime-build",
+					"Test"
+				],
+				[
+					"Packages/Rust/Cargo.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/Rust/Rust.sublime-build",
+					""
+				],
+				[
+					"Packages/Rust/Rust.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Rust/Cargo.sublime-build",
+				"Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"cheat",
+				"Cheat Sheet: Sublime Text"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"set sy",
+				"Set Syntax: Rust"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/DEVELOPMENT/angular-dev/arena-connect"
+	],
+	"file_history":
+	[
+		"/C/DEVELOPMENT/KODEHG/kode.sublime-project",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/test/test_server.py",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/Cargo.toml",
+		"/C/DEVELOPMENT/KODEHG/repo/static-server/out.log",
+		"/C/DEVELOPMENT/KODEHG/repo/static-server/Cargo.toml",
+		"/C/DEVELOPMENT/KODEHG/repo/static-server/src/provider.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/static-server/src/lib.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/mould/src/server.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/mould/src/lib.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/services/mod.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/services/auth_handler.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/static-server/examples/folder.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/static-server/src/server.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/Cargo.toml",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/main.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/content/tar_provider.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/content/dir_provider.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/content/mod.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/mould/Cargo.toml",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/services/debug_handler.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/services/session_handler.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/handler.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/session.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/static/tar_provider.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/static/dir_provider.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/static/mod.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/static_server.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-interaction/src/services/static_server.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/src/main.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-web/src/main.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/test/test_auth.py",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/test/test_client.py",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/test/test_companion.py",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/src/main_2.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/src/main_3.rs",
+		"/C/msys64/mingw64_shell.bat",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/src/main.py",
+		"/C/msys64/rust_nightly.bat",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/Cargo.lock",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-auth/src/main._rs",
+		"/C/DEVELOPMENT/KODEHG/repo/companion.sublime-workspace",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/include/__task.hrl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/uid_server.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/task_pool.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/test/test_pair.py",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Schemr/Default (Windows).sublime-keymap",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/websocket_service.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/include/task.hrl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/kode_sup.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/client_handler.erl",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Cheat Sheets/cheat-sheets/Sublime Text.cheatsheet",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Cheat Sheets/cheat-sheets/Go.cheatsheet",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Cheat Sheets/cheat-sheets/Bash.cheatsheet",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Cheat Sheets/cheat-sheets/Git.cheatsheet",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Cheat Sheets/cheat-sheets/Regular Expressions.cheatsheet",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Package Control/Package Control.sublime-settings",
+		"/C/DEVELOPMENT/SOFTWARE/Sublime Text Build 3083 x64/Data/Packages/Schemr/SchemrFavorites.sublime-settings",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/example.lua",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/kode_app.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/task.hrl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/auth_service.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/websocket_service.v1.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/priv/rootCA.crt",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/priv/rootCA.key",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/auth_handler.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/start.sh",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/octopus_app.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/kode.app.src",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/src/kode.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-companion/rebar.config",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-web/src/content.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-web/test/test_kode_web.py",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-web/Cargo.toml",
+		"/C/DEVELOPMENT/KODEHG/repo/rust-rest/src/main.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-web/src/simulator.rs",
+		"/C/DEVELOPMENT/KODEHG/repo/rust-rest/Cargo.toml",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-app/src/js/app.js",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-connect/src/hello_handler.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-connect/src/kode_runner.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/task_server.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/access_middleware.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-engine/test/test_engine.py",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/octopus.sh",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/octopus_sup.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/sid_server.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/octoups_session.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/rel/reltool.config",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/octopus.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/user_server.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/ws_database.erl",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/src/octopus.app.src",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-octopus/rebar.config",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-app/SConscript",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-engine/SConscript",
+		"/C/DEVELOPMENT/KODEHG/repo/rust-rest/SConscript",
+		"/C/DEVELOPMENT/KODEHG/SConstruct",
+		"/C/msys64/rust64.bat",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-engine/src/lua/SConscript",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-app/src/less/theme.less",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-app/src/less/theme-base.less",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-app/src/less/style.less",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-app/src/less/style-responsive.less",
+		"/C/DEVELOPMENT/rustio/rust-rest/src/main.rs",
+		"/C/DEVELOPMENT/rustio/rust-rest/src/main.py",
+		"/C/DEVELOPMENT/rustio/kode-filter/filter.py",
+		"/C/DEVELOPMENT/rustio/kode-db/src/main.rs",
+		"/C/DEVELOPMENT/rustio/kode-filter/src/main.rs",
+		"/C/DEVELOPMENT/rustio/rust-rest/src/todos.rs",
+		"/C/DEVELOPMENT/rustio/kode-db/Cargo.toml",
+		"/C/DEVELOPMENT/rustio/monger/src/main.rs",
+		"/C/DEVELOPMENT/rustio/monger/Cargo.toml",
+		"/C/DEVELOPMENT/WORKSPACE/no6/src/no6parser/no6parser.go",
+		"/C/DEVELOPMENT/WORKSPACE/no6/test.no6",
+		"/C/DEVELOPMENT/WORKSPACE/no6/src/no6shell/no6.go",
+		"/C/DEVELOPMENT/GROT/src/grot/grotlan.y",
+		"/C/DEVELOPMENT/GROT/main.go",
+		"/C/DEVELOPMENT/WORKSPACE/no6/compile.bat",
+		"/C/DEVELOPMENT/WORKSPACE/no6/src/no6parser/no6parser.output",
+		"/C/DEVELOPMENT/GROT/src/grot/grot.go",
+		"/C/DEVELOPMENT/GROT/y.output",
+		"/C/DEVELOPMENT/GROT/src/grot.go",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-engine/src/engine/scripts/kode.lua",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-connect/rebar.config",
+		"/C/DEVELOPMENT/KODEHG/repo/kode-go/src/kode/main.go",
+		"/C/Users/denis_000/Desktop/PROJECTS/Реализация/Деньги 24/analyze.R",
+		"/C/DEVELOPMENT/WORKSPACE/hacktrade-develop/robots/volk-sleep.lua.log",
+		"/C/DEVELOPMENT/WORKSPACE/hacktrade-develop/tameswanorig.lua",
+		"/C/Users/denis_000/Desktop/PROJECTS/Реализация/Деньги 24/2015-07-10.csv"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 188.0,
+		"where_history":
+		[
+			"*.erl",
+			"*.rs",
+			"",
+			"C:\\DEVELOPMENT\\KODEHG\\repo\\kode-app\\src\\less",
+			"C:\\DEVELOPMENT\\KODEHG\\repo\\kode-connect\\src",
+			"C:\\Users\\denis_000\\Desktop\\madmin_v5.2\\ANGULAR\\source"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"spath",
+			"\\",
+			"warn",
+			"AbsolutePath",
+			"\\",
+			"KeyCleaner",
+			"\\",
+			"Path",
+			"authh",
+			"request(",
+			"Input",
+			"data)",
+			"Input",
+			"Md5",
+			"RejectedByService",
+			"else if",
+			"\n}",
+			");\n",
+			"InputError",
+			"Worker",
+			"Struct",
+			"disconnect",
+			"unwrap",
+			"*/\n",
+			"Action",
+			"Request::Re",
+			"Request",
+			"Service terminated",
+			" terminated",
+			"Received",
+			"resource",
+			"Resource",
+			"worker_",
+			"worker",
+			"event",
+			"json",
+			"self",
+			"receiver",
+			"sender",
+			"			\n",
+			"Text",
+			"println",
+			" ::",
+			"Interaction",
+			"Ok",
+			"Decodable",
+			"InputMessage",
+			"ServiceMessage",
+			"RouterAction",
+			"std",
+			"from",
+			"new",
+			"client",
+			"server",
+			"cancel",
+			"ask_cancel",
+			"holder",
+			"task.hrl",
+			"server",
+			"Roles",
+			"auth-service",
+			"CLIENT",
+			"SERVER",
+			"reject",
+			"wait_ready",
+			"From",
+			"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",
+			"Request",
+			"wait_attach",
+			"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%",
+			"#{",
+			"ok",
+			"NewState",
+			"keyfind",
+			"error",
+			"expression",
+			"websocket_info",
+			"websocket_handle",
+			"		<<\"auth-service\">> => sets:new(),\n		<<\"simulation-service\">> => sets:new()\n",
+			"_From",
+			"Service",
+			"sets",
+			"TaskRef",
+			"websocket_action",
+			"Pool",
+			"Pool)",
+			"Tasks",
+			"{job",
+			"{role",
+			"need_auth",
+			"=>",
+			"opens",
+			"Rc::",
+			"Option<Rc",
+			"t",
+			"\\",
+			"Users",
+			"pytest",
+			"pdb",
+			"get_meta(",
+			"get_meta",
+			"\")*/ ",
+			"Err",
+			"to_json",
+			"id",
+			"clone",
+			"Login",
+			"ObjectId",
+			"print",
+			"println",
+			"printl",
+			"Message",
+			"ObjectId",
+			"with_str",
+			"Bson",
+			"Err(",
+			"struct",
+			"Api(",
+			"),",
+			"Some(",
+			"Kolodin",
+			"mut",
+			"&mut",
+			"Parameter{",
+			".filled",
+			"Exit",
+			"OK",
+			"sqrtrader.lua"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 124.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "/C/DEVELOPMENT/angular-dev/arena-connect/arena-connect.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"test",
+				"KODE Companion\\test\\test_client.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\DEVELOPMENT\\angular-dev\\arena-connect\\arena-connect.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

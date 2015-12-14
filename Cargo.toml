@@ -1,18 +1,20 @@
 [package]
 name = "static-server"
-version = "0.0.6"
+version = "0.0.7"
 authors = ["Denis Kolodin <deniskolodin@gmail.com>"]
 description = "Library for serve static files by HTTP"
 repository = "https://github.com/DenisKolodin/static-server"
-build = "build.rs"
+#build = "build.rs"
 license = "MIT"
 
+[[bin]]
+name = "static-server"
+doc = false
 
 [dependencies]
 log = "~0.3"
 mime_guess = "~1.1"
-hyper = "~0.6"
+hyper = "~0.7"
 tar = "~0.3"
-
-[dev-dependencies]
 env_logger = "~0.3"
+
