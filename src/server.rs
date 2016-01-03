@@ -51,15 +51,15 @@ impl StaticServer {
 		};
 		let map = self.map.clone();
 		let handler = move |req: Request, mut res: Response| {
-	    	match req.uri {
-	    		RequestUri::AbsolutePath(mut apath) => {
-	    			debug!("Request for static resource {}", apath);
-	    			if apath.ends_with("/") {
-	    				apath.push_str("index.html")
-	    			}
-    				if let Some(spath) = apath.splitn(2, '?').next() {
-		    			let mime = guess_mime_type(spath.as_ref());
-						res.headers_mut().set(ContentType(mime));						    				
+			match req.uri {
+				RequestUri::AbsolutePath(mut apath) => {
+					debug!("Request for static resource {}", apath);
+					if apath.ends_with("/") {
+						apath.push_str("index.html")
+					}
+					if let Some(spath) = apath.splitn(2, '?').next() {
+						let mime = guess_mime_type(spath.as_ref());
+						res.headers_mut().set(ContentType(mime));											
 						match map.get_content(&spath) {
 							Some(item) => {
 								*res.status_mut() = StatusCode::Ok;
@@ -67,9 +67,9 @@ impl StaticServer {
 							},
 							None => *res.status_mut() = StatusCode::NotFound,
 						}
-    				} else {
-    					*res.status_mut() = StatusCode::BadRequest;
-    				}
+					} else {
+						*res.status_mut() = StatusCode::BadRequest;
+					}
 				},
 				_ => *res.status_mut() = StatusCode::BadRequest,
 			}
