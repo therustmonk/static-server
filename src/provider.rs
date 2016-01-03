@@ -26,8 +26,8 @@ pub fn provider_from_folder(path: &Path) -> StaticMap {
 
 pub fn provider_from_tar(path: &Path) -> StaticMap {
 	let mut result = StaticMap::new();
-    let arch_file = File::open(path).unwrap();
-    let arch = Archive::new(arch_file);	
+	let arch_file = File::open(path).unwrap();
+	let arch = Archive::new(arch_file);	
 
 	for file in arch.files().unwrap() {
 		let mut file = file.unwrap();
@@ -39,15 +39,15 @@ pub fn provider_from_tar(path: &Path) -> StaticMap {
 				let str_path = {
 					let mut pb = PathBuf::new();
 					let file_path = file.header().path().unwrap();
-	    	    	pb.push(file_path);
-	    	    	let mut s = String::new();
-	    	    	s.push_str(pb.to_str().unwrap());
-	    	    	s.remove(0); // Drop first `.` in `./filename.ext`
-	    	    	s
-	    	    };	    	    
-	    	    let mut content = Vec::with_capacity(size as usize);
-    	    	file.read_to_end(&mut content).unwrap();
-    	    	result.insert(str_path, content);
+					pb.push(file_path);
+					let mut s = String::new();
+					s.push_str(pb.to_str().unwrap());
+					s.remove(0); // Drop first `.` in `./filename.ext`
+					s
+				};				
+				let mut content = Vec::with_capacity(size as usize);
+				file.read_to_end(&mut content).unwrap();
+				result.insert(str_path, content);
 			},
 			_ => ()
 		}
