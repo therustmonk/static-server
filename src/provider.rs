@@ -1,11 +1,21 @@
-
 use std::io::{Read};
 use std::fs::{self, File};
 use std::path::{Path, PathBuf};
+use std::collections::HashMap;
 
 use tar::Archive;
 
-use server::StaticMap;
+pub type StaticMap = HashMap<String, Vec<u8>>;
+
+pub trait StaticProvider: Sync + Send + 'static {
+	fn get_content(&self, path: &str) -> Option<&Vec<u8>>;
+}
+
+impl StaticProvider for StaticMap {
+	fn get_content(&self, path: &str) -> Option<&Vec<u8>> {
+		self.get(path)
+	}
+}
 
 pub fn provider_from_folder(path: &Path) -> StaticMap {
 	let mut result = StaticMap::new();

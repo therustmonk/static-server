@@ -1,5 +1,4 @@
 use std::sync::Arc;
-use std::collections::HashMap;
 use std::net::ToSocketAddrs;
 
 use mime_guess::guess_mime_type;
@@ -10,18 +9,7 @@ use hyper::uri::RequestUri;
 use hyper::header::ContentType;
 use hyper::status::StatusCode;
 
-
-pub type StaticMap = HashMap<String, Vec<u8>>;
-
-pub trait StaicProvider: Sync + Send + 'static {
-	fn get_content(&self, path: &str) -> Option<&Vec<u8>>;
-}
-
-impl StaicProvider for StaticMap {
-	fn get_content(&self, path: &str) -> Option<&Vec<u8>> {
-		self.get(path)
-	}
-}
+use provider::{StaticProvider};
 
 pub struct StaticWorker {
 	listening: Listening,
@@ -35,12 +23,12 @@ impl Drop for StaticWorker {
 
 // TODO Add trait StaticMapCreater with fn(path) and update/read method
 pub struct StaticServer {
-	map: Arc<StaicProvider>,
+	map: Arc<StaticProvider>,
 }
 
 impl StaticServer {
 
-	pub fn new<T: StaicProvider>(map: T) -> Self {
+	pub fn new<T: StaticProvider>(map: T) -> Self {
 		StaticServer { map: Arc::new(map) }
 	}
 
