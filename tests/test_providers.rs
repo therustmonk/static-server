@@ -76,8 +76,13 @@ fn test_multiple_ports_with_one_provider() {
 	}
 }
 
-/*
 #[test]
-fn test_own_provider() {
+fn test_try_rewrite() {
+	let p = provider::provider_from_folder(Path::new("examples/static"));
+	let tr = provider::TryRewrite::new(p, "/index.html".to_string());
+	let s = server::StaticServer::new(tr);
+	let _ = s.share(("localhost", 8081));
+	check_resources(8081);
+	check_equals(8081, "/not_existent_file.html", "/index.html", "text/html");
 }
-*/
+

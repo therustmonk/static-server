@@ -17,6 +17,28 @@ impl StaticProvider for StaticMap {
 	}
 }
 
+pub struct TryRewrite {
+	map: StaticMap,
+	path: String,
+}
+
+impl TryRewrite {
+	pub fn new(map: StaticMap, path: String) -> Self {
+		TryRewrite { map: map, path: path }
+	}
+}
+
+impl StaticProvider for TryRewrite {
+	fn get_content(&self, path: &str) -> Option<&Vec<u8>> {
+		let result = self.map.get(path);
+		if result.is_none() {
+			self.map.get(&self.path)
+		} else {
+			result
+		}
+	}
+}
+
 pub fn provider_from_folder(path: &Path) -> StaticMap {
 	let mut result = StaticMap::new();
 	let path = PathBuf::from(path);
