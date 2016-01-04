@@ -3,16 +3,24 @@ use std::fs::{self, File};
 use std::path::{Path, PathBuf};
 use std::collections::HashMap;
 
+use mime::Mime;
+use mime_guess::guess_mime_type;
+
 use tar::Archive;
 
-pub type StaticMap = HashMap<String, Vec<u8>>;
+pub struct Content {
+	pub mime: Mime,
+	pub payload: Vec<u8>,
+}
+
+pub type StaticMap = HashMap<String, Content>;
 
 pub trait StaticProvider: Sync + Send + 'static {
-	fn get_content(&self, path: &str) -> Option<&Vec<u8>>;
+	fn get_content(&self, path: &str) -> Option<&Content>;
 }
 
 impl StaticProvider for StaticMap {
-	fn get_content(&self, path: &str) -> Option<&Vec<u8>> {
+	fn get_content(&self, path: &str) -> Option<&Content> {
 		self.get(path)
 	}
 }
@@ -29,7 +37,7 @@ impl TryRewrite {
 }
 
 impl StaticProvider for TryRewrite {
-	fn get_content(&self, path: &str) -> Option<&Vec<u8>> {
+	fn get_content(&self, path: &str) -> Option<&Content> {
 		let result = self.map.get(path);
 		if result.is_none() {
 			self.map.get(&self.path)
@@ -67,8 +75,12 @@ pub fn provider_from_tar(path: &Path) -> StaticMap {
 					s.remove(0); // Drop first `.` in `./filename.ext`
 					s
 				};				
-				let mut content = Vec::with_capacity(size as usize);
-				file.read_to_end(&mut content).unwrap();
+				let mut payload = Vec::with_capacity(size as usize);
+				file.read_to_end(&mut payload).unwrap();
+				let content = Content {
+					mime: guess_mime_type(path),
+					payload: payload,
+				};
 				result.insert(str_path, content);
 			},
 			_ => ()
@@ -77,12 +89,15 @@ pub fn provider_from_tar(path: &Path) -> StaticMap {
 	result
 }
 
-fn read_file_to_vec(path: &Path) -> Vec<u8> {
+fn read_file_to_vec(path: &Path) -> Content {
 	match File::open(path) {
 		Ok(mut file) => {
-			let mut content = Vec::new();
-			file.read_to_end(&mut content).unwrap();
-			content
+			let mut payload = Vec::new();
+			file.read_to_end(&mut payload).unwrap();
+			Content {
+				mime: guess_mime_type(path),
+				payload: payload,
+			}
 		}
 		Err(_) => {
 			panic!("Can't read file.");

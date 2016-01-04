@@ -8,7 +8,7 @@
 
 #[macro_use]
 extern crate log;
-#[macro_use]
+extern crate mime;
 extern crate mime_guess;
 extern crate hyper;
 extern crate tar;

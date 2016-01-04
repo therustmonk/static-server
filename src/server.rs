@@ -1,8 +1,6 @@
 use std::sync::Arc;
 use std::net::ToSocketAddrs;
 
-use mime_guess::guess_mime_type;
-
 use hyper::Server;
 use hyper::server::{Listening, Request, Response};
 use hyper::uri::RequestUri;
@@ -46,12 +44,11 @@ impl StaticServer {
 						apath.push_str("index.html")
 					}
 					if let Some(spath) = apath.splitn(2, '?').next() {
-						let mime = guess_mime_type(spath.as_ref());
-						res.headers_mut().set(ContentType(mime));											
 						match map.get_content(&spath) {
 							Some(item) => {
 								*res.status_mut() = StatusCode::Ok;
-								&res.send(item).unwrap();
+								res.headers_mut().set(ContentType(item.mime.clone()));
+								&res.send(&item.payload).unwrap();
 							},
 							None => *res.status_mut() = StatusCode::NotFound,
 						}
