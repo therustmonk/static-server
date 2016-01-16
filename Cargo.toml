@@ -14,7 +14,7 @@ doc = false
 [dependencies]
 log = "~0.3"
 mime = "~0.1"
-mime_guess = "~1.1"
+mime_guess = "~1.4"
 hyper = "~0.7"
 tar = "~0.3"
 env_logger = "~0.3"
