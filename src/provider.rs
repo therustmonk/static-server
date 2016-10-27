@@ -57,9 +57,9 @@ pub fn provider_from_folder(path: &Path) -> StaticMap {
 pub fn provider_from_tar(path: &Path) -> StaticMap {
 	let mut result = StaticMap::new();
 	let arch_file = File::open(path).unwrap();
-	let arch = Archive::new(arch_file);	
+	let mut arch = Archive::new(arch_file);	
 
-	for file in arch.files().unwrap() {
+	for file in arch.entries().unwrap() {
 		let mut file = file.unwrap();
 
 		match file.header().size() {
