@@ -4,8 +4,7 @@ version = "0.0.10"
 authors = ["Denis Kolodin <deniskolodin@gmail.com>"]
 description = "Library for serve static files by HTTP"
 repository = "https://github.com/DenisKolodin/static-server"
-#build = "build.rs"
-license = "MIT"
+license = "MIT/Apache-2.0"
 
 [[bin]]
 name = "static-server"

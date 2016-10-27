@@ -12,7 +12,7 @@ use static_server::server;
 use std::env;
 
 fn main() {
-	env_logger::init().unwrap();	
+	env_logger::init().unwrap();
 
 	let ref path = match env::args().nth(1) {
 		Some(value) => value,
