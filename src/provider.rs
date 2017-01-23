@@ -78,7 +78,7 @@ pub fn provider_from_tar(path: &Path) -> StaticMap {
 				let mut payload = Vec::with_capacity(size as usize);
 				file.read_to_end(&mut payload).unwrap();
 				let content = Content {
-					mime: guess_mime_type(path),
+					mime: guess_mime_type(&str_path),
 					payload: payload,
 				};
 				result.insert(str_path, content);
