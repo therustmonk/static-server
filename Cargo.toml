@@ -1,0 +1,9 @@
+[package]
+name = "static-server-2"
+version = "0.1.0"
+authors = ["Denis Kolodin <deniskolodin@gmail.com>"]
+
+[dependencies]
+futures = "0.1.14"
+futures-cpupool = "0.1.5"
+hyper = "0.11.2"
