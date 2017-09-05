@@ -144,7 +144,7 @@ impl<T: Provider> NewService for StaticNewService<T> {
     }
 }
 
-pub fn serve<T: Provider>(addr: &SocketAddr, provider: T) {
+pub fn serve<T: Provider>(addr: &SocketAddr, provider: T, runner: Box<Future<Item=(), Error=()>>) {
     let pool = CpuPool::new_num_cpus();
     let (tx, rx) = mpsc::channel(10);
     let new_service = StaticNewService {
@@ -164,6 +164,7 @@ pub fn serve<T: Provider>(addr: &SocketAddr, provider: T) {
             Ok(pool)
         }).map(|_| ());
         handle.spawn(routine);
+        handle.spawn(runner);
         server.run().expect("Can't run a static server!");
     }
 }
