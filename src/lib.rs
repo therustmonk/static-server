@@ -1,19 +1,14 @@
 #[macro_use] extern crate log;
 extern crate futures;
-extern crate tokio_io;
-extern crate tokio_file_unix;
-extern crate bytes;
 extern crate hyper;
 
-use std::io;
+use std::io::{self, Read};
 use std::thread;
 use std::fs::File;
 use std::net::SocketAddr;
 use std::collections::HashMap;
 use futures::{Future, IntoFuture, Stream, Sink};
 use futures::sync::{oneshot, mpsc};
-use tokio_io::codec::{FramedRead, Decoder};
-use bytes::BytesMut;
 use hyper::{Chunk, Body};
 use hyper::server::{Http, Service, Request, Response};
 
@@ -47,11 +42,6 @@ impl Service for StaticService {
         let fut = send_msg.and_then(|_| get_mime).map_err(hyper::Error::from);
         Box::new(fut)
     }
-}
-
-fn other(desc: &str) -> io::Error {
-    error!("{}", desc);
-    io::Error::new(io::ErrorKind::Other, desc)
 }
 
 enum Msg {
@@ -97,41 +87,42 @@ pub fn serve(addr: SocketAddr) -> (thread::JoinHandle<hyper::Result<()>>, Regist
     let handle = thread::spawn(move || {
         let server = Http::new().bind(&addr, generator).map(move |server| {
 
-            let handle = server.handle();
             let map = HashMap::new();
             let registrator = rx.fold(map, move |mut map, msg| {
                 match msg {
                     Msg::Register{path, file} => {
                         map.insert(path, file);
+                        mybox(Ok(map).into_future())
                     },
                     Msg::SendFile{path, mime, body} => {
                         let file = map.remove(&path);
                         if let Some(file) = file {
                             let send_mime = mime.send(())
-                                .into_future()
-                                .map_err(|_| other("can't read body"));
-                            let file = tokio_file_unix::File::new_nb(file).expect("new unix file");
-                            let file = file.into_io(&handle).expect("attach async reader");
-                            let decoder = ChunkDecoder::new(1024);
-                            let framed = FramedRead::new(file, decoder);
-                            let job = framed.fold(body, |body, chunk| {
-                                    body.send(Ok(chunk))
-                                        .map_err(|_| other("can't send chunk to the channel"))
-                                })
-                                .map(|_| (/* drop the channel */));
-                            let fut = send_mime
-                                .and_then(|_| job)
-                                .map_err(|_| ());
-                            handle.spawn(fut);
+                                .into_future();
+                            thread::spawn(move || {
+                                let mut file = file;
+                                let mut buffer = [0; 1024];
+                                loop {
+                                    if let Ok(len) = file.read(&mut buffer) {
+                                        if len == 0 {
+                                            break;
+                                        }
+                                        let slice = &buffer[0..len];
+                                        let chunk = Chunk::from(slice.to_vec());
+                                        body.clone().send(Ok(chunk)).wait().unwrap();
+                                    } else {
+                                        body.clone().send(Err(other("stream corrupted").into())).wait().unwrap();
+                                    }
+                                }
+                            });
+                            mybox(send_mime.map(|_| map))
                         } else {
                             let send_mime = mime.send(())
-                                .into_future()
-                                .map_err(|_| ());
-                            handle.spawn(send_mime);
+                                .into_future();
+                            mybox(send_mime.map(|_| map))
                         }
                     },
                 }
-                Ok(map)
             }).map(|_| (/* drop the map */));
 
             let handle = server.handle();
@@ -145,31 +136,12 @@ pub fn serve(addr: SocketAddr) -> (thread::JoinHandle<hyper::Result<()>>, Regist
     (handle, registrator)
 }
 
-struct ChunkDecoder {
-    length: usize,
+fn other(desc: &str) -> io::Error {
+    error!("{}", desc);
+    io::Error::new(io::ErrorKind::Other, desc)
 }
 
-impl ChunkDecoder {
-    fn new(length: usize) -> Self {
-        ChunkDecoder {
-            length,
-        }
-    }
+fn mybox<F: Future + 'static>(f: F) -> Box<Future<Item=F::Item, Error=F::Error>> {
+    Box::new(f)
 }
 
-impl Decoder for ChunkDecoder {
-    type Item = Chunk;
-    type Error = io::Error;
-
-    fn decode(
-        &mut self,
-        src: &mut BytesMut
-    ) -> Result<Option<Self::Item>, Self::Error> {
-        Ok(if src.len() >= self.length {
-            let bs = src.split_to(self.length);
-            Some(bs.to_vec().into())
-        } else {
-            None
-        })
-    }
-}
