@@ -1,3 +1,4 @@
+#[macro_use] extern crate log;
 extern crate futures;
 extern crate tokio_io;
 extern crate tokio_file_unix;
@@ -49,6 +50,7 @@ impl Service for StaticService {
 }
 
 fn other(desc: &str) -> io::Error {
+    error!("{}", desc);
     io::Error::new(io::ErrorKind::Other, desc)
 }
 
@@ -108,8 +110,8 @@ pub fn serve(addr: SocketAddr) -> (thread::JoinHandle<hyper::Result<()>>, Regist
                             let send_mime = mime.send(())
                                 .into_future()
                                 .map_err(|_| other("can't read body"));
-                            let file = tokio_file_unix::File::new_nb(file).unwrap();
-                            let file = file.into_io(&handle).unwrap();
+                            let file = tokio_file_unix::File::new_nb(file).expect("new unix file");
+                            let file = file.into_io(&handle).expect("attach async reader");
                             let decoder = ChunkDecoder::new(1024);
                             let framed = FramedRead::new(file, decoder);
                             let job = framed.fold(body, |body, chunk| {
